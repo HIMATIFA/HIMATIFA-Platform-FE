@@ -21,7 +21,7 @@ export default defineNuxtConfig({
     },
 
     app: {
-        baseURL: 'Himatifa-Platform-FE',
+        baseURL: '/Himatifa-Platform-FE/',
         head: {
             title: 'HIMATIFA - Himpunan Mahasiswa Informatika',
             meta: [

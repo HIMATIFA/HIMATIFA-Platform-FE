@@ -42,19 +42,19 @@ const groupedDepartments = computed(() => {
 </script>
 
 <template>
-  <main>
+  <main class="transition-colors duration-500">
     <PageHero
         label="Kepengurusan"
         title="Struktur Organisasi"
         subtitle="Kepengurusan HIMATIFA Periode 2026/2027"
     />
 
-    <div class="bg-background py-16 px-6">
-      <div class="max-w-5xl mx-auto space-y-16">
+    <div class="bg-background py-16 px-6 transition-colors duration-500 min-h-screen">
+      <div class="max-w-5xl mx-auto space-y-20">
 
         <div>
           <SectionLabel>Pengurus Inti</SectionLabel>
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-8">
             <MemberCard
                 v-for="m in pengurusInti"
                 :key="m.id"
@@ -71,29 +71,41 @@ const groupedDepartments = computed(() => {
           <div
               v-for="dept in groupedDepartments"
               :key="dept.namaDivisi"
-              class="bg-card border border-border rounded-2xl p-6"
+              class="group bg-card border border-border rounded-3xl p-6 md:p-8 transition-all duration-500 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5"
           >
-            <div class="flex items-center gap-2 mb-6 pb-4 border-b border-border">
-              <Users :size="20" class="text-primary" />
-              <h3 class="text-card-foreground font-display font-bold text-xl uppercase tracking-wide">
+            <div class="flex items-center gap-4 mb-8 pb-6 border-b border-border transition-colors duration-500">
+              <div class="p-3 rounded-2xl bg-primary/10 text-primary transition-colors duration-500">
+                <Users :size="24" />
+              </div>
+              <h3 class="text-card-foreground font-display font-bold text-xl md:text-2xl uppercase tracking-wide group-hover:text-primary transition-colors duration-300">
                 Departemen {{ dept.namaDivisi }}
               </h3>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-              <div class="md:col-span-1 border-b md:border-b-0 md:border-r border-border pb-6 md:pb-0 md:pr-6">
-                <p class="text-accent text-xs font-semibold uppercase mb-3">Ketua Departemen</p>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+
+              <div class="md:col-span-1 border-b md:border-b-0 md:border-r border-border pb-8 md:pb-0 md:pr-8 transition-colors duration-500">
+                <p class="text-primary text-xs font-bold uppercase tracking-wider mb-5 flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                  Ketua Departemen
+                </p>
                 <MemberCard
                     v-if="dept.ketua"
                     :name="dept.ketua.name"
                     :role="dept.ketua.role"
                     :division="dept.ketua.division"
                 />
+                <div v-else class="text-sm text-muted-foreground italic">
+                  Belum ada ketua
+                </div>
               </div>
 
               <div class="md:col-span-3">
-                <p class="text-accent text-xs font-semibold uppercase mb-3">Anggota</p>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <p class="text-muted-foreground text-xs font-bold uppercase tracking-wider mb-5">
+                  Anggota Tim
+                </p>
+
+                <div v-if="dept.anggota.length > 0" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
                   <MemberCard
                       v-for="anggota in dept.anggota"
                       :key="anggota.id"
@@ -102,7 +114,12 @@ const groupedDepartments = computed(() => {
                       :division="anggota.division"
                   />
                 </div>
+
+                <div v-else class="flex items-center justify-center h-full min-h-[100px] rounded-xl border border-dashed border-border bg-muted/30 text-muted-foreground text-sm font-medium transition-colors duration-500">
+                  Belum ada anggota terdaftar
+                </div>
               </div>
+
             </div>
 
           </div>

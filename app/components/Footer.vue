@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Instagram, Youtube, Mail, MapPin, Github, Linkedin, ArrowRight, Send } from 'lucide-vue-next'
+import { Instagram, Youtube, Mail, MapPin, Github, Linkedin, ArrowRight } from 'lucide-vue-next'
 
 const navLinks = [
   { label: 'Beranda', path: '/' },
@@ -21,23 +21,23 @@ const socialLinks = [
 </script>
 
 <template>
-  <footer class="bg-secondary relative overflow-hidden border-t border-border">
-    <div class="absolute top-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-[100px] pointer-events-none" />
-    <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-accent/5 rounded-full blur-[100px] pointer-events-none" />
+  <footer class="bg-secondary relative overflow-hidden border-t border-border transition-colors duration-500">
+    <div class="absolute top-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-[100px] pointer-events-none transition-colors duration-500" />
+    <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-accent/5 rounded-full blur-[100px] pointer-events-none transition-colors duration-500" />
 
     <div class="max-w-6xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-12 gap-12 relative z-10">
 
       <div class="md:col-span-4 lg:col-span-5">
         <div class="flex items-center gap-3 mb-5 group w-fit">
           <div class="relative w-12 h-12 shrink-0 transition-transform duration-300 group-hover:scale-110">
-            <div class="absolute inset-0 bg-primary/20 blur-md rounded-full group-hover:bg-primary/40 transition-colors" />
+            <div class="absolute inset-0 bg-primary/20 blur-md rounded-full group-hover:bg-primary/40 transition-colors duration-500" />
             <img
                 src="/img/logo.png"
                 alt="Logo HIMATIFA"
-                class="relative w-12 h-12 object-contain mix-blend-screen"
+                class="relative w-12 h-12 object-contain transition-all duration-500 dark:mix-blend-screen"
             />
           </div>
-          <div>
+          <div class="transition-colors duration-500">
             <div class="font-display font-extrabold text-lg bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
               HIMATIFA
             </div>
@@ -47,7 +47,7 @@ const socialLinks = [
           </div>
         </div>
 
-        <p class="text-muted-foreground text-sm leading-relaxed mb-6">
+        <p class="text-muted-foreground text-sm leading-relaxed mb-6 transition-colors duration-500">
           Wadah kolaborasi, inovasi, dan aspirasi bagi seluruh Mahasiswa Informatika Universitas Muhammadiyah Surabaya untuk berkembang bersama di era digital.
         </p>
 
@@ -79,14 +79,14 @@ const socialLinks = [
       </div>
 
       <div class="md:col-span-3 lg:col-span-3">
-        <h4 class="font-display text-foreground text-sm font-bold mb-5 flex items-center gap-2">
-          <span class="w-2 h-2 rounded-full bg-primary" /> Jelajahi
+        <h4 class="font-display text-foreground text-sm font-bold mb-5 flex items-center gap-2 transition-colors duration-500">
+          <span class="w-2 h-2 rounded-full bg-primary transition-colors duration-500" /> Jelajahi
         </h4>
         <ul class="space-y-3">
           <li v-for="link in navLinks" :key="link.path">
             <NuxtLink
                 :to="link.path"
-                class="group flex items-center gap-2 text-muted-foreground text-sm hover:text-foreground transition-colors w-fit"
+                class="group flex items-center gap-2 text-muted-foreground text-sm hover:text-foreground transition-colors duration-300 w-fit"
             >
               <ArrowRight :size="14" class="opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 text-primary transition-all duration-300" />
               <span class="group-hover:translate-x-1 transition-transform duration-300">{{ link.label }}</span>
@@ -97,21 +97,21 @@ const socialLinks = [
 
       <div class="md:col-span-5 lg:col-span-4 flex flex-col justify-between">
         <div>
-          <h4 class="font-display text-foreground text-sm font-bold mb-5 flex items-center gap-2">
-            <span class="w-2 h-2 rounded-full bg-accent" /> Hubungi Kami
+          <h4 class="font-display text-foreground text-sm font-bold mb-5 flex items-center gap-2 transition-colors duration-500">
+            <span class="w-2 h-2 rounded-full bg-accent transition-colors duration-500" /> Hubungi Kami
           </h4>
           <ul class="space-y-4 mb-8">
             <li>
-              <a href="mailto:himatifa@umsurabaya.ac.id" class="group flex items-start gap-3 text-muted-foreground hover:text-foreground text-sm transition-colors">
-                <div class="p-1.5 rounded-lg bg-background border border-border group-hover:border-primary/50 group-hover:text-primary transition-colors mt-0.5">
+              <a href="mailto:himatifa@umsurabaya.ac.id" class="group flex items-start gap-3 text-muted-foreground hover:text-foreground text-sm transition-colors duration-300">
+                <div class="p-1.5 rounded-lg bg-background border border-border group-hover:border-primary/50 group-hover:text-primary transition-colors duration-300 mt-0.5">
                   <Mail :size="14" />
                 </div>
                 <span class="mt-1">himatifa@umsurabaya.ac.id</span>
               </a>
             </li>
             <li>
-              <a href="https://maps.google.com/?q=Universitas+Muhammadiyah+Surabaya" target="_blank" rel="noopener noreferrer" class="group flex items-start gap-3 text-muted-foreground hover:text-foreground text-sm transition-colors">
-                <div class="p-1.5 rounded-lg bg-background border border-border group-hover:border-primary/50 group-hover:text-primary transition-colors mt-0.5">
+              <a href="https://maps.google.com/?q=Universitas+Muhammadiyah+Surabaya" target="_blank" rel="noopener noreferrer" class="group flex items-start gap-3 text-muted-foreground hover:text-foreground text-sm transition-colors duration-300">
+                <div class="p-1.5 rounded-lg bg-background border border-border group-hover:border-primary/50 group-hover:text-primary transition-colors duration-300 mt-0.5">
                   <MapPin :size="14" />
                 </div>
                 <span class="mt-1 leading-relaxed">Jl. Sutorejo No.59, Dukuh Sutorejo, Surabaya, Jawa Timur 60113</span>
@@ -123,12 +123,12 @@ const socialLinks = [
 
     </div>
 
-    <div class="border-t border-border bg-background/50">
-      <div class="max-w-6xl mx-auto px-6 py-5 flex flex-col md:flex-row items-center justify-between gap-4 text-muted-foreground/80 text-xs font-medium">
+    <div class="border-t border-border bg-background/50 transition-colors duration-500">
+      <div class="max-w-6xl mx-auto px-6 py-5 flex flex-col md:flex-row items-center justify-between gap-4 text-muted-foreground/80 text-xs font-medium transition-colors duration-500">
         <div class="flex items-center gap-1.5">
           <span>© 2026</span>
-          <span class="w-1 h-1 rounded-full bg-border" />
-          <span class="text-foreground">HIMATIFA UMSurabaya</span>
+          <span class="w-1 h-1 rounded-full bg-border transition-colors duration-500" />
+          <span class="text-foreground transition-colors duration-500">HIMATIFA UMSurabaya</span>
         </div>
         <div class="flex flex-wrap items-center justify-center gap-x-3 gap-y-1">
           <span>Program Studi Informatika</span>

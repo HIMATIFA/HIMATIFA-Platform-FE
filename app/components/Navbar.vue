@@ -13,7 +13,7 @@ const navLinks = [
   { label: 'Profil', path: '/about' },
   { label: 'Kepengurusan', path: '/organization' },
   { label: 'Departement', path: '/departements' },
-  { label: 'Ekraf', path: '/software-house' },
+  // { label: 'Ekraf', path: '/software-house' },
   { label: 'Berita', path: '/news' },
   { label: 'Dokumentasi', path: '/documentation' },
   { label: 'Kontak', path: '/contact' }
@@ -159,7 +159,7 @@ watch(() => route.path, () => {
         </div>
 
         <NuxtLink
-            to="/app/pages/software-house/index.vue"
+            to="software-house"
             class="flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-primary-foreground text-sm font-semibold hover:brightness-110 transition-all duration-300 shadow-[0_0_16px_rgba(77,101,233,0.25)]"
         >
           Ekraf Store
@@ -250,7 +250,7 @@ watch(() => route.path, () => {
             </div>
 
             <NuxtLink
-                to="/app/pages/software-house/"
+                to="/software-house"
                 class="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-primary text-primary-foreground text-sm font-semibold hover:brightness-110 transition-all duration-300 shadow-[0_0_16px_rgba(77,101,233,0.25)] mb-6"
             >
               Ekraf Store

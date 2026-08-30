@@ -375,7 +375,6 @@ const saveDivision = () => {
           <div>
             <div class="flex items-center justify-between mb-4">
               <div class="flex items-center gap-3">
-                <!-- Icon component menggantikan teks abbr -->
                 <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary border border-primary/20">
                   <component :is="iconMap[d.icon]" class="w-5 h-5" />
                 </div>
@@ -546,7 +545,6 @@ const saveDivision = () => {
           </button>
         </div>
         <div class="p-6 space-y-4">
-          <!-- Menyesuaikan grid untuk menampung field Icon -->
           <div class="grid grid-cols-3 gap-3">
             <div class="col-span-1">
               <label class="block text-primary text-xs font-bold mb-1.5 uppercase tracking-wider">Icon</label>

@@ -60,7 +60,6 @@ const nextImg = () => {
             :key="doc.id"
             class="group bg-card border border-border rounded-2xl overflow-hidden transition-all duration-500 hover:border-primary/40 hover:shadow-md"
         >
-          <!-- Header Kartu -->
           <div class="p-6 border-b border-border transition-colors duration-500">
             <div class="flex items-center gap-2 mb-1">
               <Camera :size="15" class="text-primary" />
@@ -72,7 +71,6 @@ const nextImg = () => {
             <p class="text-muted-foreground text-sm mt-1 transition-colors duration-500">{{ doc.description }}</p>
           </div>
 
-          <!-- Grid Foto -->
           <div class="p-5 grid grid-cols-2 md:grid-cols-3 gap-4 bg-card/50 transition-colors duration-500">
             <button
                 v-for="(img, idx) in doc.images"
@@ -80,7 +78,6 @@ const nextImg = () => {
                 @click="openLightbox(doc.images, idx)"
                 class="relative aspect-[4/3] rounded-xl overflow-hidden bg-muted border border-transparent hover:border-primary/50 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background group/img"
             >
-              <!-- Overlay Hover -->
               <div class="absolute inset-0 bg-primary/0 group-hover/img:bg-primary/10 z-10 transition-colors duration-300"></div>
 
               <img

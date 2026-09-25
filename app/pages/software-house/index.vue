@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import {
   ArrowRight,
-  Code2,
-  Palette,
   ShoppingBag,
-  Sparkles,
-  Smartphone,
-  MessageSquare
+  MessageSquare,
+  Laptop,
+  Wrench,
+  Cpu,
+  FolderOpen
 } from 'lucide-vue-next'
 
 definePageMeta({
@@ -14,39 +14,65 @@ definePageMeta({
 })
 
 useHead({
-  title: 'HIMATIFA Platform - Software House & Ekraf',
+  title: 'HIMATIFA Platform - IT Services & Ekraf',
   meta: [
-    { name: 'description', content: 'Layanan IT profesional dan merchandise kreatif dari HIMATIFA UMSurabaya.' }
+    { name: 'description', content: 'Layanan IT, perbaikan laptop, dan merchandise kreatif dari HIMATIFA UMSurabaya.' }
   ]
 })
 
 const services = [
   {
-    icon: Code2,
-    title: 'Web Development',
-    description: 'Pembuatan website modern, responsif, dan teroptimasi mulai dari company profile hingga e-commerce.'
+    icon: Laptop,
+    title: 'Instalasi OS & Software',
+    description: 'Jasa install ulang Windows 10/11 lengkap dengan aplikasi standar untuk kebutuhan kuliah dan produktivitas harian.'
   },
   {
-    icon: Palette,
-    title: 'Kreatif & Desain',
-    description: 'Layanan jasa dokumentasi event, foto katalog UMKM, hingga desain antarmuka (UI/UX).'
+    icon: Wrench,
+    title: 'Cleaning & Repasta',
+    description: 'Pembersihan menyeluruh komponen laptop dan penggantian thermal paste agar suhu perangkat kembali normal dan awet.'
   },
   {
-    icon: Smartphone,
-    title: 'IT & Services',
-    description: 'Layanan perbaikan, instalasi OS, pembersihan (cleaning & repasta), dan upgrade komponen laptop/PC.'
+    icon: Cpu,
+    title: 'Upgrade RAM & SSD',
+    description: 'Bantu pasang dan upgrade kapasitas RAM atau penyimpanan SSD untuk performa laptop yang lebih cepat dan responsif.'
   }
 ]
 
-const products = [
-  { name: 'Tumbler Eksklusif HIMATIFA', price: 'Rp 45.000', tag: 'Bestseller' },
-  { name: 'Sticker Pack Developer', price: 'Rp 15.000', tag: 'Aksesoris' },
-  { name: 'Gantungan Kunci Akrilik IT', price: 'Rp 20.000', tag: 'Merch' },
-]
+interface ProductPreview {
+  name: string
+  tag: string
+  price: string
+  isDigital: boolean
+  brandName?: string
+  brandBg?: string
+  brandTextColor?: string
+}
 
-const portfolios = [
-  { title: 'Sistem Informasi Akademik', category: 'Web App' },
-  { title: 'Redesign Company Profile', category: 'UI/UX' },
+const products: ProductPreview[] = [
+  {
+    name: 'ChatGPT Plus / Go',
+    tag: 'Akun Premium',
+    price: 'Mulai Rp 35.500',
+    isDigital: true,
+    brandName: 'ChatGPT',
+    brandBg: 'bg-[#10A37F]',
+    brandTextColor: 'text-white'
+  },
+  {
+    name: 'Netflix Premium 4K',
+    tag: 'Akun Premium',
+    price: 'Mulai Rp 8.000',
+    isDigital: true,
+    brandName: 'NETFLIX',
+    brandBg: 'bg-black',
+    brandTextColor: 'text-[#E50914]'
+  },
+  {
+    name: 'Tumbler Eksklusif HIMATIFA',
+    tag: 'Merchandise',
+    price: 'Rp 50.000',
+    isDigital: false
+  }
 ]
 </script>
 
@@ -66,21 +92,21 @@ const portfolios = [
 
           <div class="text-left flex flex-col items-start order-2 lg:order-1">
             <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 leading-tight max-w-2xl">
-              Solusi Digital & <br class="hidden lg:block" />
-              <span class="text-primary">Kreativitas Tanpa Batas</span>
+              Solusi Perangkat IT & <br class="hidden lg:block" />
+              <span class="text-primary">Merchandise Kreatif</span>
             </h1>
 
             <p class="text-muted-foreground text-sm md:text-base max-w-lg mb-10 leading-relaxed">
-              Memberdayakan ide Anda melalui layanan pengembangan perangkat lunak profesional, jasa IT, dan merchandise eksklusif karya mahasiswa Teknik Informatika UMSurabaya.
+              Memberikan layanan perbaikan laptop terpercaya dengan fasilitas gratis konsultasi, serta menghadirkan merchandise eksklusif karya mahasiswa Teknik Informatika UMSurabaya.
             </p>
 
             <div class="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
               <NuxtLink to="/software-house/layanan" class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-primary text-primary-foreground font-bold text-sm flex items-center justify-center gap-2 hover:opacity-90 transition-all shadow-md group">
-                Mulai Proyek
+                Konsultasi Laptop
                 <ArrowRight :size="16" class="group-hover:translate-x-1 transition-transform" />
               </NuxtLink>
               <NuxtLink to="/software-house/produk" class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-background text-foreground font-bold text-sm flex items-center justify-center gap-2 border border-border hover:bg-secondary transition-all">
-                Lihat Katalog
+                Lihat Katalog Merch
                 <ShoppingBag :size="16" />
               </NuxtLink>
             </div>
@@ -107,9 +133,9 @@ const portfolios = [
     <section class="py-24 bg-secondary/30 border-y border-border transition-colors duration-300">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center max-w-2xl mx-auto mb-16">
-          <span class="text-primary text-xs font-bold tracking-widest uppercase mb-2 block">Keahlian Kami</span>
+          <span class="text-primary text-xs font-bold tracking-widest uppercase mb-2 block">Himatifa Services</span>
           <h2 class="text-3xl font-extrabold text-foreground mb-4">Layanan IT Profesional</h2>
-          <p class="text-muted-foreground text-sm leading-relaxed">Kami menyediakan solusi teknologi, servis perangkat, dan multimedia yang disesuaikan dengan kebutuhan Anda.</p>
+          <p class="text-muted-foreground text-sm leading-relaxed">Punya masalah dengan laptop lemot atau cepat panas? Kami hadir dengan solusi perbaikan dan maintenance yang ramah di kantong mahasiswa.</p>
         </div>
 
         <div class="grid md:grid-cols-3 gap-6">
@@ -130,55 +156,79 @@ const portfolios = [
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div>
-            <h2 class="text-3xl font-extrabold text-foreground mb-3">Karya Terbaik Kami</h2>
-            <p class="text-muted-foreground text-sm">Beberapa proyek yang telah berhasil diselesaikan oleh tim HIMATIFA.</p>
+            <h2 class="text-3xl font-extrabold text-foreground mb-3">Karya & Pengalaman</h2>
+            <p class="text-muted-foreground text-sm">Rekam jejak proyek dan portofolio yang dikerjakan oleh tim HIMATIFA.</p>
           </div>
-          <NuxtLink to="/software-house/layanan" class="text-primary text-sm font-bold flex items-center gap-1.5 hover:opacity-80 transition-opacity">
-            Lihat layanan kami <ArrowRight :size="16" />
+          <NuxtLink to="/software-house/portofolio" class="text-primary text-sm font-bold flex items-center gap-1.5 hover:opacity-80 transition-opacity">
+            Selengkapnya <ArrowRight :size="16" />
           </NuxtLink>
         </div>
 
-        <div class="grid md:grid-cols-2 gap-6">
-          <div v-for="port in portfolios" :key="port.title" class="group relative rounded-2xl overflow-hidden border border-border aspect-video bg-secondary cursor-pointer">
-            <PlaceholderImage class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity" />
-            <div class="absolute bottom-0 left-0 p-6 sm:p-8 translate-y-2 group-hover:translate-y-0 transition-transform">
-              <span class="text-primary text-[10px] sm:text-xs font-bold uppercase tracking-wider mb-2 block bg-primary/20 backdrop-blur-sm w-fit px-2 py-1 rounded">{{ port.category }}</span>
-              <h3 class="text-xl sm:text-2xl font-bold text-white">{{ port.title }}</h3>
-            </div>
-          </div>
+        <div class="text-center py-20 flex flex-col items-center justify-center bg-card/50 rounded-2xl border border-dashed border-border w-full">
+          <FolderOpen class="w-12 h-12 text-muted-foreground mb-4 opacity-50" />
+          <h3 class="text-foreground font-bold text-lg">Belum Ada Portofolio</h3>
+          <p class="text-muted-foreground text-sm mt-1">Belum ada portofolio atau project yang diselesaikan saat ini.</p>
         </div>
       </div>
     </section>
 
     <section class="py-24 bg-primary/5 border-y border-border transition-colors duration-300">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div>
             <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-wider mb-4 border border-primary/10">
-              <ShoppingBag :size="14" /> Ekraf Store
+              <ShoppingBag class="w-3.5 h-3.5" /> Ekraf Store
             </div>
-            <h2 class="text-3xl font-extrabold text-foreground mb-3">Merch & Premium</h2>
+            <h2 class="text-3xl font-extrabold text-foreground mb-3 font-display">Merch & Premium</h2>
             <p class="text-muted-foreground text-sm">Dukung aktivitas produktif Anda dengan merchandise fisik dan akun premium digital.</p>
           </div>
-          <NuxtLink to="/software-house/produk" class="px-6 py-2.5 rounded-xl bg-background border border-border text-foreground text-xs font-bold hover:bg-secondary hover:border-primary/50 transition-colors shadow-sm">
+          <NuxtLink to="/software-house/produk" class="shrink-0 px-6 py-2.5 rounded-xl bg-background border border-border text-foreground text-xs font-bold hover:bg-secondary hover:border-primary/50 transition-colors shadow-sm">
             Katalog Lengkap
           </NuxtLink>
         </div>
 
         <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
-          <div v-for="prod in products" :key="prod.name" class="bg-card rounded-2xl overflow-hidden border border-border flex flex-col group hover:border-primary/50 hover:shadow-lg transition-all duration-300">
-            <div class="relative aspect-square overflow-hidden bg-secondary">
-              <PlaceholderImage class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-              <div class="absolute inset-0 bg-background/10 group-hover:bg-transparent transition-colors"></div>
+          <NuxtLink
+              v-for="prod in products"
+              :key="prod.name"
+              to="/software-house/produk"
+              class="bg-card rounded-2xl overflow-hidden border border-border flex flex-col group hover:border-primary/50 hover:shadow-lg transition-all duration-300"
+          >
+            <div class="relative aspect-[4/3] overflow-hidden bg-secondary border-b border-border">
+
+              <template v-if="prod.isDigital">
+                <div :class="['w-full h-full flex flex-col items-center justify-center transition-transform duration-500 group-hover:scale-105', prod.brandBg]">
+                <span
+                    class="text-3xl font-extrabold tracking-wider drop-shadow-md font-display"
+                    :class="prod.brandTextColor"
+                >
+                  {{ prod.brandName }}
+                </span>
+                </div>
+              </template>
+
+              <template v-else>
+                <PlaceholderImage class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                <div class="absolute inset-0 bg-background/10 group-hover:bg-transparent transition-colors"></div>
+              </template>
+
             </div>
+
             <div class="p-6 flex flex-col flex-1 text-center items-center">
-              <span class="text-[10px] text-muted-foreground font-medium bg-secondary px-2.5 py-1 rounded-md mb-3 border border-border">{{ prod.tag }}</span>
-              <h3 class="font-bold text-foreground text-sm mb-2 group-hover:text-primary transition-colors">{{ prod.name }}</h3>
-              <p class="text-foreground font-extrabold text-base mt-auto">{{ prod.price }}</p>
+            <span class="text-[10px] text-muted-foreground font-medium bg-secondary px-2.5 py-1 rounded-md mb-3 border border-border">
+              {{ prod.tag }}
+            </span>
+              <h3 class="font-bold text-foreground text-sm mb-2 group-hover:text-primary transition-colors font-display">
+                {{ prod.name }}
+              </h3>
+              <p class="text-primary font-extrabold text-base mt-auto">
+                {{ prod.price }}
+              </p>
             </div>
-          </div>
+          </NuxtLink>
         </div>
+
       </div>
     </section>
 
@@ -190,9 +240,9 @@ const portfolios = [
 
           <MessageSquare class="w-12 h-12 text-primary mb-5 relative z-10" />
 
-          <h3 class="text-2xl md:text-3xl font-extrabold text-foreground mb-4 relative z-10">Siap Mewujudkan Ide Anda?</h3>
+          <h3 class="text-2xl md:text-3xl font-extrabold text-foreground mb-4 relative z-10">Laptop Bermasalah?</h3>
           <p class="text-muted-foreground text-sm mb-10 max-w-xl mx-auto relative z-10 leading-relaxed">
-            Diskusikan kebutuhan website, perbaikan laptop, atau pengadaan merchandise untuk acara Anda bersama tim profesional kami.
+            Dapatkan fasilitas <strong>Gratis Konsultasi</strong> untuk setiap kendala perangkat Anda, atau hubungi kami untuk pemesanan merchandise Ekraf HIMATIFA.
           </p>
 
           <a

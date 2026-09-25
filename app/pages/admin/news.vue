@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, watch } from 'vue'
 import {
   Plus, Search, Edit2, Trash2, Eye, X, ChevronLeft,
-  AlertTriangle, Check, Bold,
-  Italic, Link, List, AlignLeft, Calendar, User, Tag
+  AlertTriangle, Check, Link, Calendar, User, Tag
 } from 'lucide-vue-next'
 
 definePageMeta({
@@ -16,18 +15,19 @@ interface NewsItem {
   id: number;
   title: string;
   slug: string;
-  excerpt: string;
+  summary: string;
   category: string;
   status: Status;
   date: string;
   author: string;
   image: string;
+  link: string;
 };
 
 const INITIAL_NEWS: NewsItem[] = [
-  { id: 1, title: "HIMATIFA Sukses Gelar Workshop Pemrograman Web Semester Ini", slug: "himatifa-workshop-pemrograman-web", excerpt: "Workshop pemrograman web yang diselenggarakan HIMATIFA mendapatkan antusias tinggi dari ratusan mahasiswa Informatika.", category: "Kegiatan", status: "Published", date: "2026-08-20", author: "Humas Team", image: "" },
-  { id: 2, title: "Rapat Koordinasi Kepengurusan HIMATIFA Periode 2025/2026", slug: "rapat-koordinasi-kepengurusan-2025-2026", excerpt: "Seluruh pengurus HIMATIFA menghadiri rapat koordinasi untuk mematangkan program kerja dan rencana kegiatan.", category: "Organisasi", status: "Draft", date: "2026-08-15", author: "Sekretariat", image: "" },
-  { id: 3, title: "Tim HIMATIFA Raih Prestasi di Kompetisi IT Tingkat Nasional", slug: "tim-himatifa-prestasi-kompetisi-it-nasional", excerpt: "Tim mahasiswa yang berafiliasi dengan HIMATIFA berhasil meraih prestasi membanggakan dalam kompetisi IT nasional.", category: "Prestasi", status: "Published", date: "2026-08-10", author: "Bid. Prestasi", image: "" },
+  { id: 1, title: "HIMATIFA Sukses Gelar Workshop Pemrograman Web Semester Ini", slug: "himatifa-workshop-pemrograman-web", summary: "Workshop pemrograman web yang diselenggarakan HIMATIFA mendapatkan antusias tinggi dari ratusan mahasiswa Informatika.", category: "Kegiatan", status: "Published", date: "2026-08-20", author: "Humas Team", image: "", link: "" },
+  { id: 2, title: "Rapat Koordinasi Kepengurusan HIMATIFA Periode 2025/2026", slug: "rapat-koordinasi-kepengurusan-2025-2026", summary: "Seluruh pengurus HIMATIFA menghadiri rapat koordinasi untuk mematangkan program kerja dan rencana kegiatan.", category: "Organisasi", status: "Draft", date: "2026-08-15", author: "Sekretariat", image: "", link: "" },
+  { id: 3, title: "Tim HIMATIFA Raih Prestasi di Kompetisi IT Tingkat Nasional", slug: "tim-himatifa-prestasi-kompetisi-it-nasional", summary: "Tim mahasiswa yang berafiliasi dengan HIMATIFA berhasil meraih prestasi membanggakan dalam kompetisi IT nasional.", category: "Prestasi", status: "Published", date: "2026-08-10", author: "Bid. Prestasi", image: "", link: "" },
 ];
 
 const categories = ["Kegiatan", "Organisasi", "Prestasi", "Pengumuman", "Lainnya"];
@@ -41,7 +41,15 @@ const deleteId = ref<number | null>(null);
 const isSaved = ref(false);
 
 const form = ref<Partial<NewsItem>>({
-  title: "", slug: "", excerpt: "", category: "Kegiatan", status: "Draft", author: "", date: "", image: ""
+  title: "",
+  slug: "",
+  summary: "",
+  category: "Kegiatan",
+  status: "Draft",
+  author: "",
+  date: "",
+  image: "",
+  link: ""
 });
 
 const filteredNews = computed(() => {
@@ -74,7 +82,17 @@ watch(() => form.value.title, (newTitle) => {
 });
 
 const openCreate = () => {
-  form.value = { title: "", slug: "", excerpt: "", category: "Kegiatan", status: "Draft", author: "Admin", date: new Date().toISOString().split('T')[0], image: "" };
+  form.value = {
+    title: "",
+    slug: "",
+    summary: "",
+    category: "Kegiatan",
+    status: "Draft",
+    author: "Admin",
+    date: new Date().toISOString().split('T')[0],
+    image: "",
+    link: ""
+  };
   view.value = "create";
 };
 
@@ -149,15 +167,12 @@ const handleDelete = () => {
       <div class="grid lg:grid-cols-3 gap-6">
         <div class="lg:col-span-2 space-y-5">
           <div class="bg-card rounded-2xl border border-border p-5 shadow-sm">
-            <label class="block text-primary text-xs font-bold mb-3 uppercase tracking-wider">Cover Image</label>
-            <div class="aspect-[16/7] rounded-xl bg-input-background border-2 border-dashed border-border flex flex-col items-center justify-center gap-2 hover:border-primary/40 transition-colors cursor-pointer group">
-              <PlaceholderImage class="w-full h-full object-cover opacity-50 mix-blend-multiply rounded-xl" />
-              <div class="absolute flex flex-col items-center justify-center text-center p-4">
-                <ImageIcon class="w-8 h-8 text-muted-foreground/60 group-hover:text-primary transition-colors mb-2" />
-                <span class="text-muted-foreground text-sm font-medium">Klik untuk unggah gambar</span>
-                <span class="text-muted-foreground/50 text-xs mt-1">PNG, JPG, WEBP — maks. 5 MB</span>
-              </div>
+            <label class="block text-primary text-xs font-bold mb-1.5 uppercase tracking-wider">Link Gambar (Cover Image URL)</label>
+            <div class="flex items-center gap-2 border border-border bg-input-background rounded-xl px-4 py-2.5 focus-within:border-primary transition-all">
+              <Link class="w-4 h-4 text-muted-foreground" />
+              <input v-model="form.image" type="url" placeholder="https://kompasiana.com/image..." class="flex-1 bg-transparent text-foreground text-sm focus:outline-none" />
             </div>
+            <p class="text-xs text-muted-foreground mt-2">*Masukkan URL gambar dari artikel Kompasiana Anda.</p>
           </div>
 
           <div class="bg-card rounded-2xl border border-border p-5 space-y-4 shadow-sm">
@@ -175,21 +190,17 @@ const handleDelete = () => {
           </div>
 
           <div class="bg-card rounded-2xl border border-border p-5 shadow-sm">
-            <label class="block text-primary text-xs font-bold mb-1.5 uppercase tracking-wider">Ringkasan (Excerpt)</label>
-            <textarea v-model="form.excerpt" placeholder="Ringkasan singkat untuk daftar berita..." rows="3" class="w-full border border-border bg-transparent rounded-xl px-4 py-2.5 text-foreground text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all resize-none Leading-relaxed"></textarea>
+            <label class="block text-primary text-xs font-bold mb-1.5 uppercase tracking-wider">Ringkasan (Summary)</label>
+            <textarea v-model="form.summary" placeholder="Ringkasan singkat untuk ditampilkan di daftar berita (maks 200 karakter)..." rows="3" class="w-full border border-border bg-transparent rounded-xl px-4 py-2.5 text-foreground text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all resize-none leading-relaxed"></textarea>
           </div>
 
-          <div class="bg-card rounded-2xl border border-border overflow-hidden shadow-sm">
-            <div class="flex items-center gap-1 px-4 py-2 border-b border-border bg-input-background/50">
-              <span class="text-muted-foreground text-xs font-medium mr-2">Format:</span>
-              <button v-for="icon in [Bold, Italic, Link, List, AlignLeft]" :key="icon.name" class="w-8 h-8 rounded-lg flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all">
-                <component :is="icon" class="w-4 h-4" />
-              </button>
+          <div class="bg-card rounded-2xl border border-border p-5 shadow-sm">
+            <label class="block text-primary text-xs font-bold mb-1.5 uppercase tracking-wider">Link Artikel Asli (Kompasiana)</label>
+            <div class="flex items-center gap-2 border border-border bg-input-background rounded-xl px-4 py-2.5 focus-within:border-primary transition-all">
+              <Link class="w-4 h-4 text-muted-foreground" />
+              <input v-model="form.link" type="url" placeholder="https://www.kompasiana.com/nama-anda/..." class="flex-1 bg-transparent text-foreground text-sm focus:outline-none" />
             </div>
-            <div class="p-4">
-              <label class="block text-primary text-xs font-bold mb-2 uppercase tracking-wider">Konten Utama</label>
-              <textarea placeholder="Mulai menulis berita di sini menggunakan Markdown atau teks biasa..." rows="12" class="w-full text-foreground text-sm focus:outline-none resize-none leading-relaxed bg-transparent"></textarea>
-            </div>
+            <p class="text-xs text-muted-foreground mt-2">*Pengunjung akan diarahkan ke tautan ini ketika menekan tombol "Baca Selengkapnya".</p>
           </div>
         </div>
 
@@ -243,10 +254,6 @@ const handleDelete = () => {
               </div>
             </div>
           </div>
-
-          <button class="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl border border-primary/20 bg-primary/5 text-primary text-sm font-bold hover:bg-primary/10 transition-colors">
-            <Eye class="w-4 h-4" /> Preview Tampilan Publik
-          </button>
         </div>
       </div>
     </div>
@@ -302,7 +309,6 @@ const handleDelete = () => {
             <tbody class="divide-y divide-border">
             <tr v-if="filteredNews.length === 0">
               <td colspan="6" class="px-5 py-16 text-center text-muted-foreground/60 text-sm">
-                <ImageIcon class="w-10 h-10 mx-auto mb-3 opacity-40" />
                 Tidak ada berita yang ditemukan.
               </td>
             </tr>
@@ -311,7 +317,8 @@ const handleDelete = () => {
               <td class="px-5 py-4">
                 <div class="flex items-center gap-3">
                   <div class="w-16 h-10 rounded-lg overflow-hidden bg-input-background shrink-0 shadow-inner">
-                    <PlaceholderImage class="w-full h-full object-cover" />
+                    <img v-if="item.image" :src="item.image" class="w-full h-full object-cover" />
+                    <div v-else class="w-full h-full bg-input-background flex items-center justify-center text-muted-foreground/40 text-xs">No Img</div>
                   </div>
                   <div class="min-w-0">
                     <div class="text-foreground font-semibold text-sm leading-snug line-clamp-1 group-hover:text-primary transition-colors font-display">{{ item.title }}</div>
@@ -333,9 +340,9 @@ const handleDelete = () => {
                   <button @click="openEdit(item)" class="w-8 h-8 rounded-lg flex items-center justify-center text-muted-foreground hover:bg-primary/10 hover:text-primary transition-all" title="Edit Berita">
                     <Edit2 class="w-3.5 h-3.5" />
                   </button>
-                  <button class="w-8 h-8 rounded-lg flex items-center justify-center text-muted-foreground hover:bg-primary/10 hover:text-primary transition-all" title="Preview Publik">
+                  <a v-if="item.link" :href="item.link" target="_blank" class="w-8 h-8 rounded-lg flex items-center justify-center text-muted-foreground hover:bg-primary/10 hover:text-primary transition-all" title="Lihat di Kompasiana">
                     <Eye class="w-3.5 h-3.5" />
-                  </button>
+                  </a>
                   <button @click="confirmDelete(item.id)" class="w-8 h-8 rounded-lg flex items-center justify-center text-muted-foreground hover:bg-destructive/10 hover:text-destructive transition-all" title="Hapus Berita">
                     <Trash2 class="w-3.5 h-3.5" />
                   </button>
@@ -348,13 +355,13 @@ const handleDelete = () => {
 
         <div class="md:hidden divide-y divide-border">
           <div v-if="filteredNews.length === 0" class="p-10 text-center text-muted-foreground/60 text-sm">
-            <ImageIcon class="w-10 h-10 mx-auto mb-3 opacity-40" />
             Tidak ada berita.
           </div>
           <div v-for="item in filteredNews" :key="item.id" class="p-4 hover:bg-input-background/40 transition-colors">
             <div class="flex gap-4 mb-3">
               <div class="w-20 h-14 rounded-xl overflow-hidden bg-input-background shrink-0 shadow-inner">
-                <PlaceholderImage class="w-full h-full object-cover" />
+                <img v-if="item.image" :src="item.image" class="w-full h-full object-cover" />
+                <div v-else class="w-full h-full bg-input-background flex items-center justify-center text-muted-foreground/40 text-xs">No Img</div>
               </div>
               <div class="flex-1 min-w-0 space-y-1">
                 <div class="text-foreground font-semibold text-sm line-clamp-2 leading-snug font-display">{{ item.title }}</div>

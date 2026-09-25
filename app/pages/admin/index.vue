@@ -19,8 +19,8 @@ const router = useRouter()
 const stats = [
   { label: 'Total Berita', value: 3, icon: Newspaper, path: '/admin/news', published: 2, draft: 1 },
   { label: 'Dokumentasi', value: 3, icon: Camera, path: '/admin/docs', published: 3, draft: 0 },
-  { label: 'Anggota Pengurus', value: 8, icon: Users, path: '/admin/members', published: 8, draft: 0 },
-  { label: 'Bidang', value: 4, icon: Layers, path: '/admin/org', published: 4, draft: 0 },
+  { label: 'Anggota Pengurus', value: 40, icon: Users, path: '/admin/members', published: 8, draft: 0 },
+  { label: 'Departement', value: 5, icon: Layers, path: '/admin/org', published: 4, draft: 0 },
 ]
 
 const recentNews = [
@@ -33,7 +33,7 @@ const quickActions = [
   { label: 'Buat Berita Baru', path: '/admin/news', icon: Newspaper },
   { label: 'Tambah Dokumentasi', path: '/admin/docs', icon: Camera },
   { label: 'Kelola Pengurus', path: '/admin/members', icon: Users },
-  { label: 'Atur Bidang', path: '/admin/divisions', icon: Layers },
+  { label: 'Atur Departement', path: '/admin/divisions', icon: Layers },
 ]
 
 const contentStatus = [

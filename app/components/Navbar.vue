@@ -13,15 +13,14 @@ const navLinks = [
   { label: 'Profil', path: '/about' },
   { label: 'Kepengurusan', path: '/organization' },
   { label: 'Departement', path: '/departements' },
-  // { label: 'Ekraf', path: '/software-house' },
   { label: 'Berita', path: '/news' },
   { label: 'Dokumentasi', path: '/documentation' },
   { label: 'Kontak', path: '/contact' }
 ]
 
 const socialLinks = [
-  { label: 'Instagram', url: 'https://instagram.com/himatifa_ums', icon: Instagram },
-  { label: 'YouTube', url: 'https://youtube.com/@himatifa_ums', icon: Youtube },
+  { label: 'Instagram', url: 'https://www.instagram.com/himatifa_umsura/', icon: Instagram },
+  { label: 'YouTube', url: 'https://www.youtube.com/@HIMATIFAUMSBY/', icon: Youtube },
   { label: 'Website', url: 'https://umsurabaya.ac.id', icon: Globe }
 ]
 
@@ -87,6 +86,7 @@ watch(() => route.path, () => {
     ]"
   >
     <nav class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+
       <NuxtLink to="/" class="flex items-center gap-3 group">
         <div class="relative w-8 h-8 shrink-0">
           <div class="absolute inset-0 bg-primary/20 blur-md rounded-full transition-opacity duration-500" />
@@ -101,7 +101,7 @@ watch(() => route.path, () => {
             HIMATIFA
           </div>
           <div class="text-accent text-[9px] tracking-widest uppercase font-medium">
-            UMSurabaya
+            UMSURA
           </div>
         </div>
       </NuxtLink>
@@ -123,6 +123,7 @@ watch(() => route.path, () => {
       </ul>
 
       <div class="hidden md:flex items-center gap-3">
+
         <div class="relative">
           <button
               @click="isThemeMenuOpen = !isThemeMenuOpen"
@@ -158,12 +159,20 @@ watch(() => route.path, () => {
           <div v-if="isThemeMenuOpen" @click="isThemeMenuOpen = false" class="fixed inset-0 z-40"></div>
         </div>
 
-        <NuxtLink
-            to="software-house"
-            class="flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-primary-foreground text-sm font-semibold hover:brightness-110 transition-all duration-300 shadow-[0_0_16px_rgba(77,101,233,0.25)]"
-        >
-          Ekraf Store
-        </NuxtLink>
+        <div class="flex items-center gap-2">
+          <NuxtLink
+              to="/admin/login"
+              class="px-4 py-2 rounded-lg bg-primary/10 border border-primary/20 text-primary text-sm font-semibold hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+          >
+            Login Admin
+          </NuxtLink>
+          <NuxtLink
+              to="/software-house"
+              class="flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-primary-foreground text-sm font-semibold hover:brightness-110 transition-all duration-300 shadow-[0_0_16px_rgba(77,101,233,0.25)]"
+          >
+            Ekraf Store
+          </NuxtLink>
+        </div>
       </div>
 
       <button
@@ -249,12 +258,20 @@ watch(() => route.path, () => {
               </button>
             </div>
 
-            <NuxtLink
-                to="/software-house"
-                class="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-primary text-primary-foreground text-sm font-semibold hover:brightness-110 transition-all duration-300 shadow-[0_0_16px_rgba(77,101,233,0.25)] mb-6"
-            >
-              Ekraf Store
-            </NuxtLink>
+            <div class="flex flex-col gap-2 mb-6">
+              <NuxtLink
+                  to="/software-house"
+                  class="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-primary text-primary-foreground text-sm font-semibold hover:brightness-110 transition-all duration-300 shadow-[0_0_16px_rgba(77,101,233,0.25)]"
+              >
+                Ekraf Store
+              </NuxtLink>
+              <NuxtLink
+                  to="/admin/login"
+                  class="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-primary/10 border border-primary/20 text-primary text-sm font-semibold hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+              >
+                Login Admin
+              </NuxtLink>
+            </div>
 
             <div class="flex items-center justify-center gap-3">
               <a

@@ -84,7 +84,7 @@ onMounted(() => {
         </div>
         <div class="hidden sm:block text-left">
           <div class="text-xs font-bold text-foreground">Super Admin</div>
-          <div class="text-[10px] text-muted-foreground">superadmin@himatifa.or.id</div>
+          <div class="text-[10px] text-muted-foreground">himatifa@ft.um-surabaya.ac.id</div>
         </div>
       </div>
     </div>

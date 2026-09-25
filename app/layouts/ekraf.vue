@@ -37,7 +37,7 @@ const socialLinks = [
   { label: 'YouTube', url: 'https://www.youtube.com/@HIMATIFAUMSBY', icon: Youtube },
   { label: 'GitHub', url: 'https://github.com/HIMATIFA', icon: Github },
   { label: 'LinkedIn', url: '#', icon: Linkedin },
-  { label: 'TikTok', url: '#', icon: 'tiktok' }
+  { label: 'TikTok', url: 'www.tiktok.com/@himatifa_umsurabaya', icon: 'tiktok' }
 ]
 
 const currentTheme = ref('system')
@@ -104,7 +104,7 @@ const isActive = (to: string) => {
                   HIMATIFA
                 </div>
                 <div class="text-accent text-[9px] tracking-widest uppercase font-medium">
-                  UMSurabaya
+                  UMSURA
                 </div>
               </div>
             </div>
@@ -275,7 +275,7 @@ const isActive = (to: string) => {
                 HIMATIFA
               </div>
               <div class="text-accent text-[10px] tracking-widest uppercase font-bold flex gap-1">
-                UMSurabaya <span class="text-primary">| COMPANY</span>
+                UMSURA <span class="text-primary">| COMPANY</span>
               </div>
             </div>
           </div>
@@ -376,7 +376,7 @@ const isActive = (to: string) => {
           <div class="flex items-center gap-1.5">
             <span>© 2026</span>
             <span class="w-1 h-1 rounded-full bg-border transition-colors duration-500" />
-            <span class="text-foreground transition-colors duration-500">HIMATIFA UMSurabaya</span>
+            <span class="text-foreground transition-colors duration-500">HIMATIFA UMSURA</span>
           </div>
           <div class="flex flex-wrap items-center justify-center gap-x-3 gap-y-1">
             <span>Program Studi Informatika</span>

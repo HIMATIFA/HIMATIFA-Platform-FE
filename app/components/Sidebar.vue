@@ -4,10 +4,10 @@ import {
   LayoutDashboard,
   Newspaper,
   Camera,
-  Users,
   Layers,
   LogOut,
-    Cog
+  Cog,
+  UserPlus
 } from 'lucide-vue-next'
 
 defineProps<{
@@ -19,23 +19,13 @@ const router = useRouter()
 
 const menuGroups = [
   {
-    title: 'Menu Utama',
     items: [
       { id: 'dashboard', label: 'Dashboard', path: '/admin', icon: LayoutDashboard },
-    ]
-  },
-  {
-    title: 'Konten Publik',
-    items: [
       { id: 'news', label: 'Berita', path: '/admin/news', icon: Newspaper },
       { id: 'docs', label: 'Dokumentasi', path: '/admin/docs', icon: Camera },
-    ]
-  },
-  {
-    title: 'Kepengurusan',
-    items: [
-      { id: 'divisions', label: 'Departements', path: '/admin/org', icon: Layers },
-      { id: 'settign', label: 'Pengaturan', path: '/admin/settigns', icon: Cog },
+      { id: 'divisions', label: 'Departemen', path: '/admin/org', icon: Layers },
+      { id: 'recruitment', label: 'Rekrutmen', path: '/admin/recruitment', icon: UserPlus },
+      { id: 'settings', label: 'Pengaturan', path: '/admin/settings', icon: Cog },
     ]
   }
 ]
@@ -67,7 +57,7 @@ const handleExit = () => {
             HIMATIFA
           </div>
           <div class="text-accent text-[9px] tracking-widest uppercase font-medium truncate">
-            UMSurabaya
+            UMSURA
           </div>
         </div>
       </NuxtLink>
@@ -76,13 +66,7 @@ const handleExit = () => {
     <nav class="flex-1 overflow-y-auto p-3 space-y-6 custom-scrollbar">
       <div v-for="(group, index) in menuGroups" :key="index" class="space-y-1.5">
 
-        <div
-            v-if="!isCollapsed"
-            class="px-3.5 text-[10px] font-bold uppercase tracking-widest text-muted-foreground/60 mb-2 font-display"
-        >
-          {{ group.title }}
-        </div>
-        <div v-else-if="index !== 0" class="w-8 mx-auto border-t border-border my-3" />
+        <div v-if="isCollapsed && index !== 0" class="w-8 mx-auto border-t border-border my-3" />
 
         <NuxtLink
             v-for="item in group.items"

@@ -5,18 +5,18 @@ import { Camera, X, ChevronLeft, ChevronRight } from 'lucide-vue-next'
 const docs = [
   {
     id: 1,
-    title: "Malam Keakraban (Makrab) 2025",
-    date: "15 Jan 2026",
-    description: "Kegiatan pengakraban seluruh anggota dan pengurus baru HIMATIFA di awal kepengurusan.",
-    images: ["", "", ""]
+    title: "Orientasi Studi Mahasiswa (OSCAR) 2026",
+    date: "20 September 2026",
+    description: "Dokumentasi rangkaian kegiatan Orientasi Studi dan Cinta Almamater (OSCAR) HIMATIFA.",
+    images: ["", ""]
   },
   {
     id: 2,
-    title: "Pelatihan Web Development",
-    date: "12 Mar 2026",
-    description: "Workshop intensif pembuatan website menggunakan framework Nuxt 3 dan Tailwind.",
-    images: ["", ""]
-  }
+    title: "Malam Keakraban (MIDNIGHT) 2025",
+    date: "11 Jan 2025",
+    description: "Dokumentasi kegiatan Malam Keakraban (MIDNIGHT) mahasiswa baru Informatika UMSurabaya.",
+    images: ["", "", "", ""]
+  },
 ]
 
 const lightbox = ref<{ images: string[]; idx: number } | null>(null)

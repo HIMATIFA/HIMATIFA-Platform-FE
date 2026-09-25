@@ -24,15 +24,15 @@ const orgForm = ref({
 })
 
 const socialForm = ref({
-  instagram: "@himatifa_ums",
-  youtube: "HIMATIFA UMSurabaya",
+  instagram: "https://www.instagram.com/himatifa_umsura/",
+  youtube: "https://www.youtube.com/@HIMATIFAUMSBY",
   website: "",
   twitter: "",
   linkedin: "",
 })
 
 const contactForm = ref({
-  email: "himatifa@umsurabaya.ac.id",
+  email: "himatifa@ft.um-surabaya.ac.id",
   phone: "",
   address: "Universitas Muhammadiyah Surabaya",
   city: "Surabaya",

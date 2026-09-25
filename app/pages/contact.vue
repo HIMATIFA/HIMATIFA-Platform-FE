@@ -11,7 +11,6 @@ const socialLinks = [
   { name: "Instagram", icon: Instagram, url: "https://www.instagram.com/himatifa_umsura/" },
   { name: "YouTube", icon: Youtube, url: "https://www.youtube.com/@HIMATIFAUMSBY" },
   { name: "GitHub", icon: Github, url: "https://github.com/HIMATIFA" },
-  { name: "LinkedIn", icon: Linkedin, url: "#" },
 ]
 </script>
 
@@ -54,7 +53,7 @@ const socialLinks = [
             <div class="text-accent text-xs font-semibold mb-4 uppercase tracking-wide transition-colors duration-500">
               Jejaring Sosial
             </div>
-            <div class="flex flex-wrap gap-2.5">
+            <div class="flex flex-wrap gap-3">
               <a
                   v-for="social in socialLinks"
                   :key="social.name"
@@ -68,7 +67,7 @@ const socialLinks = [
               </a>
 
               <a
-                  href="#"
+                  href="www.tiktok.com/@himatifa_umsurabaya"
                   aria-label="TikTok"
                   class="flex items-center gap-2 px-3.5 py-2 rounded-lg bg-background border border-border text-muted-foreground text-sm hover:bg-primary hover:text-primary-foreground hover:border-primary hover:-translate-y-0.5 transition-all duration-300 font-medium shadow-sm"
               >

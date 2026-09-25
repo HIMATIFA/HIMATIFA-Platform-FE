@@ -22,9 +22,28 @@ type DocItem = {
 };
 
 const INITIAL_DOCS: DocItem[] = [
-  { id: 1, title: "Workshop Web Development 2026", event: "Workshop Web Development", date: "2026-08-20", description: "Dokumentasi kegiatan workshop pemrograman web yang diikuti oleh mahasiswa Informatika UMSurabaya.", category: "Workshop", status: "Published", coverImage: "", gallery: ["", ""] },
-  { id: 2, title: "Rapat Koordinasi Kepengurusan", event: "Rapat Koordinasi", date: "2026-08-15", description: "Dokumentasi rapat koordinasi seluruh pengurus HIMATIFA periode 2025/2026.", category: "Internal", status: "Published", coverImage: "", gallery: [""] },
-  { id: 3, title: "Kompetisi IT Nasional", event: "Kompetisi IT", date: "2026-08-10", description: "Dokumentasi partisipasi tim HIMATIFA dalam kompetisi IT tingkat nasional.", category: "Kompetisi", status: "Draft", coverImage: "", gallery: [""] },
+  {
+    id: 1,
+    title: "Malam Keakraban (MIDNIGHT) 2026",
+    event: "MIDNIGHT 2026",
+    date: "2026-01-11",
+    description: "Dokumentasi kegiatan Malam Keakraban (MIDNIGHT) mahasiswa baru Informatika UMSurabaya.",
+    category: "Internal",
+    status: "Published",
+    coverImage: "",
+    gallery: ["", "", "", ""]
+  },
+  {
+    id: 2,
+    title: "Orientasi Studi & Cinta Almamater (OSCAR) 2026",
+    event: "OSCAR 2026",
+    date: "2026-09-20",
+    description: "Dokumentasi rangkaian kegiatan Orientasi Studi dan Cinta Almamater (OSCAR) HIMATIFA.",
+    category: "Internal",
+    status: "Published",
+    coverImage: "",
+    gallery: ["", ""]
+  }
 ];
 
 const docs = ref<DocItem[]>(INITIAL_DOCS)
@@ -33,7 +52,7 @@ const deleteId = ref<number | null>(null)
 const isSaved = ref(false)
 
 const form = ref<Partial<DocItem>>({
-  title: "", event: "", date: "", description: "", category: "Workshop", status: "Draft", coverImage: "", gallery: []
+  title: "", event: "", date: "", description: "", category: "Internal", status: "Draft", coverImage: "", gallery: []
 })
 
 const getStatusClass = (status: string) => {
@@ -46,7 +65,7 @@ const getStatusClass = (status: string) => {
 }
 
 const openCreate = () => {
-  form.value = { title: "", event: "", date: "", description: "", category: "Workshop", status: "Draft", coverImage: "", gallery: [] }
+  form.value = { title: "", event: "", date: "", description: "", category: "Internal", status: "Draft", coverImage: "", gallery: [] }
   view.value = "create"
 }
 
@@ -118,11 +137,11 @@ const deleteTarget = computed(() => docs.value.find(d => d.id === deleteId.value
           <div class="bg-card rounded-2xl border border-border p-5 space-y-4 shadow-sm">
             <div>
               <label class="block text-primary text-xs font-bold mb-1.5 uppercase tracking-wider">Judul Dokumentasi</label>
-              <input v-model="form.title" type="text" placeholder="Judul dokumentasi kegiatan" class="w-full border border-border bg-transparent rounded-xl px-4 py-2.5 text-foreground text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all" />
+              <input v-model="form.title" type="text" placeholder="Contoh: Dokumentasi MIDNIGHT 2026" class="w-full border border-border bg-transparent rounded-xl px-4 py-2.5 text-foreground text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all" />
             </div>
             <div>
               <label class="block text-primary text-xs font-bold mb-1.5 uppercase tracking-wider">Nama Kegiatan/Event</label>
-              <input v-model="form.event" type="text" placeholder="Nama kegiatan yang didokumentasikan" class="w-full border border-border bg-transparent rounded-xl px-4 py-2.5 text-foreground text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all" />
+              <input v-model="form.event" type="text" placeholder="Contoh: MIDNIGHT / OSCAR" class="w-full border border-border bg-transparent rounded-xl px-4 py-2.5 text-foreground text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all" />
             </div>
             <div>
               <label class="block text-primary text-xs font-bold mb-1.5 uppercase tracking-wider">Deskripsi</label>
@@ -172,8 +191,8 @@ const deleteTarget = computed(() => docs.value.find(d => d.id === deleteId.value
             <div>
               <label class="block text-primary text-xs font-bold mb-1.5 uppercase tracking-wider">Kategori</label>
               <select v-model="form.category" class="w-full border border-border bg-transparent rounded-xl px-3 py-2.5 text-foreground text-sm focus:outline-none focus:border-primary transition-all">
-                <option>Workshop</option>
                 <option>Internal</option>
+                <option>Workshop</option>
                 <option>Kompetisi</option>
                 <option>Sosial</option>
                 <option>Lainnya</option>
@@ -200,8 +219,8 @@ const deleteTarget = computed(() => docs.value.find(d => d.id === deleteId.value
     <div v-else>
       <div class="flex items-center justify-between mb-6">
         <div>
-          <h1 class="text-2xl font-black text-foreground font-display">Dokumentasi</h1>
-          <p class="text-muted-foreground text-sm mt-1">{{ docs.length }} dokumentasi kegiatan</p>
+          <h1 class="text-2xl font-black text-foreground font-display">Dokumentasi Kegiatan</h1>
+          <p class="text-muted-foreground text-sm mt-1">{{ docs.length }} dokumentasi tersimpan</p>
         </div>
         <button @click="openCreate" class="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-primary text-primary-foreground text-sm font-bold hover:bg-primary/90 transition-colors shadow-sm">
           <Plus class="w-4 h-4" /> Buat Dokumentasi
@@ -227,7 +246,7 @@ const deleteTarget = computed(() => docs.value.find(d => d.id === deleteId.value
 
             <div class="flex items-center gap-1.5 mt-3 mb-4">
               <ImageIcon class="w-3 h-3 text-muted-foreground" />
-              <span class="text-muted-foreground text-xs">{{ doc.gallery.length }} foto</span>
+              <span class="text-muted-foreground text-xs">{{ doc.gallery.length }} foto tersimpan</span>
             </div>
 
             <div class="flex items-center gap-2 mt-auto pt-4 border-t border-border">

@@ -20,7 +20,7 @@ const showcaseItems = [
           Ekraf HIMATIFA
         </h1>
         <p class="text-muted-foreground text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
-          Etalase kreativitas dan layanan mandiri dari mahasiswa Teknik Informatika UMSurabaya.
+          Etalase kreativitas dan layanan mandiri dari mahasiswa Teknik Informatika UMSURA.
           Temukan karya, merchandise eksklusif, hingga layanan digital profesional kami.
         </p>
       </div>

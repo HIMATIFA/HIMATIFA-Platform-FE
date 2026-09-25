@@ -41,15 +41,15 @@ const iconMap: Record<string, any> = {
 };
 
 const initialMembers: Member[] = [
-  { id: 1, name: "Vice Rajin Sholat", role: "Ketua Himpunan", division: null, level: 0, status: "Aktif", photo: "" },
-  { id: 2, name: "Andy Bagus", role: "Wakil Himpunan", division: null, level: 1, status: "Aktif", photo: "" },
-  { id: 3, name: "Aura Rizky", role: "Sekretaris Umum", division: null, level: 1, status: "Aktif", photo: "" },
-  { id: 4, name: "Maulidia", role: "Bendahara Umum", division: null, level: 1, status: "Aktif", photo: "" },
-  { id: 5, name: "Depa Raja Iblis", role: "Ketua Departemen PSDM", division: "PSDM", level: 2, status: "Aktif", photo: "" },
-  { id: 6, name: "Muhammad Arya", role: "Ketua Departement Luar Negeri", division: "Deplu", level: 2, status: "Aktif", photo: "" },
-  { id: 7, name: "Khoirul Anam", role: "Ketua Departement Ekraf", division: "Ekraf", level: 2, status: "Aktif", photo: "" },
-  { id: 8, name: "Afzal Raza", role: "Ketua Departement Kepsos", division: "Kepsos", level: 2, status: "Aktif", photo: "" },
-  { id: 9, name: "Naufal Umron", role: "Ketua Departement Medkominfo", division: "Medkominfo", level: 2, status: "Aktif", photo: "" },
+  { id: 1, name: "Vichras Mazcheranou Hafizh", role: "Ketua Himpunan", division: null, level: 0, status: "Aktif", photo: "/img/kahim.jpg" },
+  { id: 2, name: "Andy Bagus Oesmadi", role: "Wakil Himpunan", division: null, level: 0, status: "Aktif", photo: "/img/kahim.jpg" },
+  { id: 3, name: "Aura Rizki Inayah Fadylah", role: "Sekretaris Umum", division: null, level: 0, status: "Aktif", photo: "/img/kahim.jpg" },
+  { id: 4, name: "Maulidia Dliyaun Najah", role: "Bendahara Umum", division: null, level: 0, status: "Aktif", photo: "/img/kahim.jpg" },
+  { id: 5, name: "Vlahadiqa Runayasha Khandeva W.", role: "Ketua Departemen PSDM", division: "PSDM", level: 1, status: "Aktif", photo: "/img/kahim.jpg" },
+  { id: 6, name: "Naufal Umron Farras", role: "Ketua Departement Medkominfo", division: "Medkominfo", level: 1, status: "Aktif", photo: "/img/kahim.jpg" },
+  { id: 7, name: "Afzal Raza Sarfaraz", role: "Ketua Departement Kepedulian Sosial", division: "Kepsos", level: 1, status: "Aktif", photo: "/img/kahim.jpg" },
+  { id: 8, name: "Abdullah Khoirul Anam", role: "Ketua Departement Ekonomi Kreatif", division: "Ekraf", level: 1, status: "Aktif", photo: "/img/kahim.jpg" },
+  { id: 9, name: "Muhammad Arya Putra Riswanto", role: "Ketua Departement Luar Negeri", division: "Deplu", level: 1, status: "Aktif", photo: "/img/kahim.jpg" },
 ];
 
 const initialDivisions: Division[] = [
@@ -133,7 +133,7 @@ const divisionModal = ref<{
   form: { abbr: "", icon: "Code", name: "", description: "", programs: [], status: "Aktif" }
 });
 
-const levelLabels = ["Pimpinan Umum", "Pengurus Inti", "Ketua Bidang"];
+const levelLabels = ["Pengurus Inti", "Ketua Departement", "Anggota Departement"];
 
 const groupedMembers = computed(() => {
   return [0, 1, 2].map((level) => ({
@@ -256,7 +256,7 @@ const saveDivision = () => {
   <div class="space-y-6 animate-in fade-in duration-300">
     <div>
       <h1 class="text-2xl font-black text-foreground font-display">Organisasi & Departemen</h1>
-      <p class="text-muted-foreground text-sm mt-0.5">Kelola struktur kepengurusan dan bidang HIMATIFA</p>
+      <p class="text-muted-foreground text-sm mt-0.5">Kelola struktur kepengurusan dan departement HIMATIFA</p>
     </div>
 
     <div class="flex gap-2 bg-card rounded-2xl border border-border p-1.5 w-fit shadow-sm">
@@ -362,7 +362,7 @@ const saveDivision = () => {
             @click="openDivisionModal()"
             class="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-primary text-primary-foreground text-sm font-bold hover:bg-primary/90 transition-colors shadow-sm"
         >
-          <Plus class="w-4 h-4"/> Tambah Bidang
+          <Plus class="w-4 h-4"/> Tambah Departement
         </button>
       </div>
 
@@ -491,14 +491,14 @@ const saveDivision = () => {
             <input
                 v-model="memberModal.form.role"
                 type="text"
-                placeholder="Contoh: Ketua Umum / Anggota Bidang"
+                placeholder="Contoh: Ketua Departement / Anggota Departement"
                 class="w-full border border-border bg-transparent rounded-xl px-4 py-2.5 text-foreground text-sm focus:outline-none focus:border-primary transition-all"
             />
           </div>
 
           <div class="grid grid-cols-2 gap-3">
             <div>
-              <label class="block text-primary text-xs font-bold mb-1.5 uppercase tracking-wider">Bidang</label>
+              <label class="block text-primary text-xs font-bold mb-1.5 uppercase tracking-wider">Departement</label>
               <select
                   v-model="memberModal.form.division"
                   class="w-full border border-border bg-card rounded-xl px-3 py-2.5 text-foreground text-sm focus:outline-none focus:border-primary transition-all"
@@ -538,7 +538,7 @@ const saveDivision = () => {
       <div class="bg-card rounded-2xl shadow-xl border border-border w-full max-w-lg overflow-hidden animate-in zoom-in-95 duration-200">
         <div class="flex items-center justify-between px-6 py-4 border-b border-border">
           <h3 class="text-foreground font-bold text-base font-display">
-            {{ divisionModal.form.id ? 'Edit Departemen' : 'Tambah Bidang Baru' }}
+            {{ divisionModal.form.id ? 'Edit Departemen' : 'Tambah Departement Baru' }}
           </h3>
           <button @click="divisionModal.open = false" class="text-muted-foreground hover:text-foreground transition-colors">
             <X class="w-5 h-5"/>
@@ -585,7 +585,7 @@ const saveDivision = () => {
             <input
                 v-model="divisionModal.form.name"
                 type="text"
-                placeholder="Contoh: Bidang Pengembangan Organisasi"
+                placeholder="Contoh: Departement Pengembangan Sumber Daya Mahasiswa"
                 class="w-full border border-border bg-transparent rounded-xl px-4 py-2.5 text-foreground text-sm focus:outline-none focus:border-primary transition-all"
             />
           </div>

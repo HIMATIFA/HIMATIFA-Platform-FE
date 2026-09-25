@@ -15,8 +15,7 @@ const socialLinks = [
   { label: 'Instagram', url: 'https://www.instagram.com/himatifa_umsura/', icon: Instagram },
   { label: 'YouTube', url: 'https://www.youtube.com/@HIMATIFAUMSBY', icon: Youtube },
   { label: 'GitHub', url: 'https://github.com/HIMATIFA', icon: Github },
-  { label: 'LinkedIn', url: '#', icon: Linkedin },
-  { label: 'TikTok', url: '#', icon: 'tiktok' }
+  { label: 'TikTok', url: 'www.tiktok.com/@himatifa_umsurabaya', icon: 'tiktok' }
 ]
 </script>
 
@@ -42,7 +41,7 @@ const socialLinks = [
               HIMATIFA
             </div>
             <div class="text-accent text-[10px] tracking-widest uppercase font-bold">
-              UMSurabaya
+              UMSURA
             </div>
           </div>
         </div>
@@ -102,11 +101,13 @@ const socialLinks = [
           </h4>
           <ul class="space-y-4 mb-8">
             <li>
-              <a href="mailto:himatifa@umsurabaya.ac.id" class="group flex items-start gap-3 text-muted-foreground hover:text-foreground text-sm transition-colors duration-300">
+              <a href="mailto:himatifa@ft.um-surabaya.ac.id" class="group flex items-start gap-3 text-muted-foreground hover:text-foreground text-sm transition-colors duration-300">
                 <div class="p-1.5 rounded-lg bg-background border border-border group-hover:border-primary/50 group-hover:text-primary transition-colors duration-300 mt-0.5">
                   <Mail :size="14" />
                 </div>
-                <span class="mt-1">himatifa@umsurabaya.ac.id</span>
+                <span class="mt-1">
+                  himatifa@ft.um-surabaya.ac.id
+                </span>
               </a>
             </li>
             <li>
@@ -128,7 +129,7 @@ const socialLinks = [
         <div class="flex items-center gap-1.5">
           <span>© 2026</span>
           <span class="w-1 h-1 rounded-full bg-border transition-colors duration-500" />
-          <span class="text-foreground transition-colors duration-500">HIMATIFA UMSurabaya</span>
+          <span class="text-foreground transition-colors duration-500">HIMATIFA UMSURA</span>
         </div>
         <div class="flex flex-wrap items-center justify-center gap-x-3 gap-y-1">
           <span>Program Studi Informatika</span>

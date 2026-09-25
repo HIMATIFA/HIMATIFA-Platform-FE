@@ -2,7 +2,6 @@
 import { ref, computed } from 'vue'
 import type { CSSProperties } from 'vue'
 import { Users, Briefcase, Globe, MonitorPlay, X, User, MousePointerClick } from 'lucide-vue-next'
-import kahim from "~~/public/img/kahim.jpg"
 
 interface Member {
   id: number
@@ -13,50 +12,50 @@ interface Member {
 }
 
 const org: Member[] = [
-  { id: 1, name: "Vichras Mazcheranou Hafizh", role: "Wali Kota", division: null, image: kahim },
-  { id: 2, name: "Andy Bagus Oesmadi", role: "Wakil Wali Kota", division: null, image: kahim },
-  { id: 3, name: "Aura Rizki Inayah Fadylah", role: "Sekretaris", division: null, image: kahim },
-  { id: 4, name: "Maulidia Dliyaun Najah", role: "Bendahara", division: null, image: kahim },
+  { id: 1, name: "Vichras Mazcheranou Hafizh", role: "Wali Kota", division: null, image: "/img/kahim.jpg" },
+  { id: 2, name: "Andy Bagus Oesmadi", role: "Wakil Wali Kota", division: null, image: "/img/kahim.jpg" },
+  { id: 3, name: "Aura Rizki Inayah Fadylah", role: "Sekretaris", division: null, image:  "/img/kahim.jpg" },
+  { id: 4, name: "Maulidia Dliyaun Najah", role: "Bendahara", division: null, image:  "/img/kahim.jpg" },
 
-  { id: 5, name: "Vlahadiqa Runayasha Khandeva W.", role: "Ketua Departemen", division: "PSDM", image: kahim },
-  { id: 101, name: "Zacky Maulana", role: "Sekretaris Departemen", division: "PSDM", image: kahim },
-  { id: 102, name: "Moh. Faiz Haikal", role: "Anggota", division: "PSDM", image: kahim },
-  { id: 103, name: "Albany Raffa Assyukurra", role: "Anggota", division: "PSDM", image: kahim },
-  { id: 104, name: "Improatus Sholiha", role: "Anggota", division: "PSDM", image: kahim },
-  { id: 105, name: "Fairuz Abdillah Idrus", role: "Anggota", division: "PSDM", image: kahim },
+  { id: 5, name: "Vlahadiqa Runayasha Khandeva W.", role: "Ketua Departemen", division: "PSDM", image:  "/img/kahim.jpg" },
+  { id: 101, name: "Zacky Maulana", role: "Sekretaris Departemen", division: "PSDM", image:  "/img/kahim.jpg" },
+  { id: 102, name: "Moh. Faiz Haikal", role: "Anggota", division: "PSDM", image:  "/img/kahim.jpg"},
+  { id: 103, name: "Albany Raffa Assyukurra", role: "Anggota", division: "PSDM", image:  "/img/kahim.jpg" },
+  { id: 104, name: "Improatus Sholiha", role: "Anggota", division: "PSDM", image:  "/img/kahim.jpg" },
+  { id: 105, name: "Fairuz Abdillah Idrus", role: "Anggota", division: "PSDM", image:  "/img/kahim.jpg"},
 
-  { id: 6, name: "Naufal Umron Farras", role: "Ketua Departemen", division: "MEDKOMINFO", image: kahim },
-  { id: 106, name: "Venerdi Dinarsa Narendra Putra Chaidir", role: "Sekretaris Departemen", division: "MEDKOMINFO", image: kahim },
-  { id: 107, name: "Muhammad Dafa Firdaus", role: "Anggota", division: "MEDKOMINFO", image: kahim },
-  { id: 108, name: "Galang Gumilar Aditama", role: "Anggota", division: "MEDKOMINFO", image: kahim },
-  { id: 109, name: "Suci Dwi Prasetiyo", role: "Anggota", division: "MEDKOMINFO", image: kahim },
-  { id: 110, name: "Manisa Ika Setyaningrum", role: "Anggota", division: "MEDKOMINFO", image: kahim },
+  { id: 6, name: "Naufal Umron Farras", role: "Ketua Departemen", division: "MEDKOMINFO", image:  "/img/kahim.jpg" },
+  { id: 106, name: "Venerdi Dinarsa Narendra Putra Chaidir", role: "Sekretaris Departemen", division: "MEDKOMINFO", image:  "/img/kahim.jpg" },
+  { id: 107, name: "Muhammad Dafa Firdaus", role: "Anggota", division: "MEDKOMINFO", image:  "/img/kahim.jpg" },
+  { id: 108, name: "Galang Gumilar Aditama", role: "Anggota", division: "MEDKOMINFO", image:  "/img/kahim.jpg"},
+  { id: 109, name: "Suci Dwi Prasetiyo", role: "Anggota", division: "MEDKOMINFO", image:  "/img/kahim.jpg" },
+  { id: 110, name: "Manisa Ika Setyaningrum", role: "Anggota", division: "MEDKOMINFO", image:  "/img/kahim.jpg" },
 
-  { id: 7, name: "Afzal Raza Sarfaraz", role: "Ketua Departemen", division: "KEPSOS", image: kahim },
-  { id: 111, name: "Bilqis Prasasti Madinah", role: "Sekretaris Departemen", division: "KEPSOS", image: kahim },
-  { id: 112, name: "Rangga Putra Ryandinata", role: "Anggota", division: "KEPSOS", image: kahim },
-  { id: 113, name: "Maulida Imroatus Solehah", role: "Anggota", division: "KEPSOS", image: kahim },
-  { id: 114, name: "Satrio", role: "Anggota", division: "KEPSOS", image: kahim },
-  { id: 115, name: "Mutiah Al Karami", role: "Anggota", division: "KEPSOS", image: kahim },
-  { id: 116, name: "Zilvo Nada Haerina", role: "Anggota", division: "KEPSOS", image: kahim },
-  { id: 117, name: "Hanif Kanda Pratama", role: "Anggota", division: "KEPSOS", image: kahim },
-  { id: 118, name: "Umert Muslim", role: "Anggota", division: "KEPSOS", image: kahim },
-  { id: 119, name: "Mert Dolsis", role: "Anggota", division: "KEPSOS", image: kahim },
+  { id: 7, name: "Afzal Raza Sarfaraz", role: "Ketua Departemen", division: "KEPSOS", image:  "/img/kahim.jpg" },
+  { id: 111, name: "Bilqis Prasasti Madinah", role: "Sekretaris Departemen", division: "KEPSOS", image:  "/img/kahim.jpg" },
+  { id: 112, name: "Rangga Putra Ryandinata", role: "Anggota", division: "KEPSOS", image:  "/img/kahim.jpg" },
+  { id: 113, name: "Maulida Imroatus Solehah", role: "Anggota", division: "KEPSOS", image:  "/img/kahim.jpg" },
+  { id: 114, name: "Satrio", role: "Anggota", division: "KEPSOS", image:  "/img/kahim.jpg" },
+  { id: 115, name: "Mutiah Al Karami", role: "Anggota", division: "KEPSOS", image:  "/img/kahim.jpg" },
+  { id: 116, name: "Zilvo Nada Haerina", role: "Anggota", division: "KEPSOS", image:  "/img/kahim.jpg" },
+  { id: 117, name: "Hanif Kanda Pratama", role: "Anggota", division: "KEPSOS", image:  "/img/kahim.jpg" },
+  { id: 118, name: "Umert Muslim", role: "Anggota", division: "KEPSOS", image:  "/img/kahim.jpg" },
+  { id: 119, name: "Mert Dolsis", role: "Anggota", division: "KEPSOS", image:  "/img/kahim.jpg" },
 
-  { id: 8, name: "Khoirul Anam", role: "Ketua Departemen", division: "EKRAF", image: kahim },
-  { id: 120, name: "Bintang Fauharza Harfa Abimanyu", role: "Sekretaris Departemen", division: "EKRAF", image: kahim },
-  { id: 121, name: "Salsya Bhila Cendana Salehuddin", role: "Anggota", division: "EKRAF", image: kahim },
-  { id: 122, name: "M.Nabil Al Ghifari", role: "Anggota", division: "EKRAF", image: kahim },
-  { id: 123, name: "Agnes Putri Haryono", role: "Anggota", division: "EKRAF", image: kahim },
-  { id: 124, name: "Hersanda Muhammad Alfarizi", role: "Anggota", division: "EKRAF", image: kahim },
-  { id: 125, name: "Muhammad Nauvaldi Akbar Al Faruqi", role: "Anggota", division: "EKRAF", image: kahim },
-  { id: 126, name: "Muhammad Ihsan Prdaipta Maulana", role: "Anggota", division: "EKRAF", image: kahim },
-  { id: 127, name: "Fathul Hidayat Sampurna", role: "Anggota", division: "EKRAF", image: kahim },
+  { id: 8, name: "Khoirul Anam", role: "Ketua Departemen", division: "EKRAF", image:  "/img/kahim.jpg" },
+  { id: 120, name: "Bintang Fauharza Harfa Abimanyu", role: "Sekretaris Departemen", division: "EKRAF", image:  "/img/kahim.jpg" },
+  { id: 121, name: "Salsya Bhila Cendana Salehuddin", role: "Anggota", division: "EKRAF", image:  "/img/kahim.jpg" },
+  { id: 122, name: "M.Nabil Al Ghifari", role: "Anggota", division: "EKRAF", image:  "/img/kahim.jpg" },
+  { id: 123, name: "Agnes Putri Haryono", role: "Anggota", division: "EKRAF", image:  "/img/kahim.jpg" },
+  { id: 124, name: "Hersanda Muhammad Alfarizi", role: "Anggota", division: "EKRAF", image:  "/img/kahim.jpg" },
+  { id: 125, name: "Muhammad Nauvaldi Akbar Al Faruqi", role: "Anggota", division: "EKRAF", image:  "/img/kahim.jpg" },
+  { id: 126, name: "Muhammad Ihsan Prdaipta Maulana", role: "Anggota", division: "EKRAF", image:  "/img/kahim.jpg" },
+  { id: 127, name: "Fathul Hidayat Sampurna", role: "Anggota", division: "EKRAF", image:  "/img/kahim.jpg" },
 
-  { id: 9, name: "Muhammad Arya Putra Riswanto", role: "Ketua Departemen", division: "Deplu", image: kahim },
-  { id: 128, name: "Abidzar Dzakwan Sahudi", role: "Sekretaris Departemen", division: "Deplu", image: kahim },
-  { id: 129, name: "Yasmin Salim Syamlan", role: "Anggota", division: "Deplu", image: kahim },
-  { id: 130, name: "Muhammad Zakky Arifina", role: "Anggota", division: "Deplu", image: kahim },
+  { id: 9, name: "Muhammad Arya Putra Riswanto", role: "Ketua Departemen", division: "Deplu", image:  "/img/kahim.jpg" },
+  { id: 128, name: "Abidzar Dzakwan Sahudi", role: "Sekretaris Departemen", division: "Deplu", image:  "/img/kahim.jpg" },
+  { id: 129, name: "Yasmin Salim Syamlan", role: "Anggota", division: "Deplu", image:  "/img/kahim.jpg" },
+  { id: 130, name: "Muhammad Zakky Arifina", role: "Anggota", division: "Deplu", image:  "/img/kahim.jpg" },
 ]
 
 const deptCovers: Record<string, string> = {

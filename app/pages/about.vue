@@ -4,7 +4,6 @@
 // import logo3 from "~~/public/img/logo_3.png"
 // import logo4 from "~~/public/img/logo_4.png"
 // import logo5 from "~~/public/img/logo_5.png"
-// import logo6 from "~~/public/img/logo_6.png"
 
 const identities = [
   { label: "Nama Resmi", value: "Himpunan Mahasiswa Informatika" },
@@ -27,7 +26,7 @@ const MISSIONS = [
 
 const filosofiLogo = [
   {
-    image: "/img/logo3.png",
+    image: "/img/logo_3.png",
     title: "10 Cabang Sirkuit",
     description: "Jumlah sepuluh cabang yang mengelilingi melambangkan tanggal kelahiran HIMATIFA yaitu 10 Oktober 2020. Banyaknya cabang ini juga bermaksud bahwa seluruh mahasiswa dalam himpunan berasal dari latar belakang yang berbeda-beda."
   },
